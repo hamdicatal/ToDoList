@@ -15,9 +15,9 @@
             <div class="card">
                 <div class="card-header">Add</div>
                 <div class="card-body">
-                    <form>
+                    <form id="todo-form">
                         <div class="form-group">
-                            <input class="form-control" placeholder="Enter task detail here...">
+                            <input class="form-control" id="todo" name="todo" placeholder="Enter task detail here...">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Add Task</button>
                     </form>
@@ -26,16 +26,18 @@
             <div class="card">
                     <div class="card-header">List</div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input class="form-control" id="filter" name="filter" placeholder="Search task...">
+                            </div>
+                        </div>
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between">
                                 Todo 1 <a href = "#" class ="delete-item"><i class = "fa fa-remove"></i></a>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                Todo 2 <a href = "#" class ="delete-item"><i class = "fa fa-remove"></i></a>
-                            </li>
                         </ul>
                         <hr>
-                        <button type="submit" class="btn btn-danger btn-block">Clear All</button>
+                        <button type="submit" class="btn btn-danger btn-block" id="clear-all">Clear All</button>
                     </div>
                 </div>
         </div>
