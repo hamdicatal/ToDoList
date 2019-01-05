@@ -16,10 +16,31 @@ function eventListeners(){
 function addTodo(e){
     // use trim for removing whitespaces
     const newTodo = todoInput.value.trim();
-    addTodoToList(newTodo);
+
+    if(newTodo === ""){
+        showAlert("warning", "Please enter task detail...");
+    }
+    else{
+        addTodoToList(newTodo);
+        showAlert("success", "Task added successfully!")
+    }
 
     // for not submit to other page
     e.preventDefault();
+}
+
+// for create warnings dynamically
+function showAlert(type, message){
+    const alert = document.createElement("div");
+    alert.className = `alert alert-${type}`;
+    alert.textContent = message;
+
+    leftCardBody.appendChild(alert);
+
+    // for warning timeout(remove after 2 seconds)
+    setTimeout(function(){
+        alert.remove();
+    }, 2000);
 }
 
 // for adding new task to list
