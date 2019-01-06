@@ -11,6 +11,15 @@ eventListeners();
 
 function eventListeners(){
     form.addEventListener("submit", addTodo);
+    document.addEventListener("DOMContentLoaded", loadAllTodosFromStorage);
+}
+
+// list all todos when document loaded
+function loadAllTodosFromStorage(){
+    let todos = getTodosFromStorage();
+    todos.forEach(function(todo){
+        addTodoToList(todo);
+    });
 }
 
 function addTodo(e){
