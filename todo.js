@@ -13,6 +13,25 @@ function eventListeners(){
     form.addEventListener("submit", addTodo); // for adding new todo
     document.addEventListener("DOMContentLoaded", loadAllTodosFromStorage); // load all todos to UI
     rightCardBody.addEventListener("click", deleteTodo); // for deleting todo item
+    filter.addEventListener("keyup", filterTodos); // for filtering
+}
+
+// filtering and searching tasks
+function filterTodos(e){
+    const filterValue = e.target.value.toLowerCase(); // get value to search
+    const listItems = document.querySelectorAll(".list-group-item"); // select list items
+
+    listItems.forEach(function(listItem){
+        const text = listItem.textContent.toLowerCase();
+        
+        if(text.indexOf(filterValue) === -1){
+            // we use !important because d-flex class
+            listItem.setAttribute("style", "display: none !important");
+        }
+        else{
+            listItem.setAttribute("style", "display: block");
+        }
+    });
 }
 
 // delete todo from list (and of course from storage)
