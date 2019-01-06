@@ -14,6 +14,17 @@ function eventListeners(){
     document.addEventListener("DOMContentLoaded", loadAllTodosFromStorage); // load all todos to UI
     rightCardBody.addEventListener("click", deleteTodo); // for deleting todo item
     filter.addEventListener("keyup", filterTodos); // for filtering
+    clearButton.addEventListener("click", clearAllTodos); // for clearing all todos
+}
+
+function clearAllTodos(e){
+    // clear all todos from UI
+    if(confirm("Are you sure you want to clear all list?")){
+        while(todoList.firstElementChild != null){
+            todoList.removeChild(todoList.firstElementChild);
+        }
+        localStorage.removeItem("todos");
+    }
 }
 
 // filtering and searching tasks
