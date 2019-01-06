@@ -22,11 +22,33 @@ function addTodo(e){
     }
     else{
         addTodoToList(newTodo);
+        addTodoToStorage(newTodo);
         showAlert("success", "Task added successfully!")
     }
 
     // for not submit to other page
     e.preventDefault();
+}
+
+// get todos from local storage
+function getTodosFromStorage(){
+    let todos;
+
+    if(localStorage.getItem("todos") === null){
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    return todos;
+}
+
+// set todos to local storage
+function addTodoToStorage(newTodo){
+    let todos = getTodosFromStorage();
+    todos.push(newTodo);
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 // for create warnings dynamically
